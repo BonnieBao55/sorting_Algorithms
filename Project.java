@@ -117,8 +117,8 @@ public class Project {
             int mainIndex = 0, leftArrIndex = 0, rightArrIndex = 0;
 
             //main condition for merge comparisons
-            if (leftArrIndex < leftArraySize && rightArrIndex < rightArraySize){
-                array[mainIndex++] = leftArray[leftArrIndex++];
+            while (leftArrIndex < leftArraySize && rightArrIndex < rightArraySize){
+                if(leftarray[leftArrIndex] < rightArray[rightArrIndex]){
                 mainIndex++;
                 leftArrIndex++;
             }
@@ -127,6 +127,7 @@ public class Project {
                 mainIndex++;
                 rightArrIndex++;
             }
+        }
 
 
             while (leftArrIndex < leftArraySize){
