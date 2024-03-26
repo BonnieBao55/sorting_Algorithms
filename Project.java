@@ -11,8 +11,9 @@ public class Project {
         for(int value : arr){
             System.out.print(" " + value);
         }
+        QuickSort(arr);
 
-        BubbleSort(arr);
+        //BubbleSort(arr);
 
         System.out.println(arr);
 
@@ -118,7 +119,7 @@ public class Project {
 
             //main condition for merge comparisons
             while (leftArrIndex < leftArraySize && rightArrIndex < rightArraySize){
-                if(leftarray[leftArrIndex] < rightArray[rightArrIndex]){
+                if(leftArray[leftArrIndex] < rightArray[rightArrIndex]){
                 mainIndex++;
                 leftArrIndex++;
             }
@@ -147,6 +148,59 @@ public class Project {
 
 
         }
-        
+
+    public static void  QuickSort(int[] arr) {
+        RecursiveQuickSort(arr, 0, arr.length - 1);
+
+    }
+
+
+    /**
+     * Will recursively call itself to perform Quick Sort operation
+     * 
+     * @param arr the array which should be sorted
+     * @param low starting index for the current sub array being evaluated
+     * @param high ending index for the current sub array being evaluated
+     */
+    public static void  RecursiveQuickSort(int[] arr, int low, int high) {
+        //this is our condition that lets us know if we need to 
+        //continue splitting into sub arrays
+
+        if (low < high){
+            int pivotIndex = Partition(arr, low, high);
+            RecursiveQuickSort(arr, low, pivotIndex - 1);
+            RecursiveQuickSort(arr, pivotIndex +1, high);
+
+        }
+
+    }       
     
+public static int Partition(int[] arr, int low, int high){
+    //choose our pivot
+    int pivot = arr[high];
+
+    int i = low - 1 ;
+
+    /**
+     * j will go through each of the elements in the current sub array being evaluated
+     * it should start at low and end at high (inclusive)
+     */
+
+    for (int j = low; j <= high; j++ ) {
+        if (arr[j] < pivot) {
+            i++;
+            //swap
+            Swap (arr, i, j); 
+        }
+    }
+    Swap (arr, i + 1, high); 
+    return i + 1;
+
+}
+    public static void Swap(int[] arr, int index1, int index2) {
+        int temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
+        
+    }
 }
